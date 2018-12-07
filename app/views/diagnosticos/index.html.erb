@@ -1,11 +1,9 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Diagnosticos</h1>
+<h1>Diagnósticos</h1>
   <%= form_tag(diagnosticos_path, :method => "get", id: "search-text") do %>
   <div class="row">
         <div class="input-field col s12">
-          <%= text_field_tag :search, params[:search], placeholder: "Buscar Diagnosticos", id: "tags", data: {autocomplete_source: Diagnostico.order(:nome).map(&:nome)}  %>
-          <%= submit_tag "Buscar Diagnosticos",:class => "btn-large blue" %>
+          <%= text_field_tag :search, params[:search], placeholder: "Buscar Diagnósticos", id: "tags", data: {autocomplete_source: Diagnostico.order(:nome).map(&:nome)}  %>
+          <%= submit_tag "Buscar Diagnósticos",:class => "btn-large blue" %>
           <% end %>
         </div>
   </div>
@@ -21,12 +19,12 @@
     <% @diagnosticos.each do |diagnostico| %>
       <tr>
         <td class="nomes"><%= diagnostico.nome %></td>
-        <td><%= link_to 'Ver Relatorio', busca_relatorio_path(:id => diagnostico) %></td>
+        <td><%= link_to 'Ver Diagnóstico', busca_relatorio_path(:id => diagnostico) %></td>
        
         <% if current_user && current_user.admin %>
-        <td><%= link_to 'Show', diagnostico %></td>
-        <td><%= link_to 'Edit', edit_diagnostico_path(diagnostico) %></td>
-        <td><%= link_to 'Destroy', diagnostico, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', diagnostico %></td>
+        <td><%= link_to 'Editar', edit_diagnostico_path(diagnostico) %></td>
+        <td><%= link_to 'Apagar', diagnostico, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       
         <% end %>
       </tr>
@@ -38,8 +36,8 @@
 <br>
 <% if current_user && current_user.admin %>
         
-<%= link_to 'New Diagnostico', new_diagnostico_path %>
-
+<%= link_to 'Novo Diagnóstico', new_diagnostico_path, class: "btn-large blue" %>
+<br><br>
 <% end %>
 <script>
 
