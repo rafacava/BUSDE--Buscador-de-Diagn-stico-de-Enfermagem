@@ -1,9 +1,8 @@
-<h1>Relatorios</h1>
-<h2>Relatorio para os fatores <p id="demo"></p></h2>
+<h1>Relatório para os fatores <p id="demo"></p></h1>
 <table class="center-align">
   <thead>
     <tr>
-      <th>Diagnosticos</th>
+      <th>Diagnósticos</th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -11,7 +10,7 @@
     <% @relatorios.each do |relatorio| %>
       <tr>
         <td><%= relatorio.diagnostico.nome %></td>
-       <td><%= link_to 'Ver Diagnostico', busca_relatorio_path(:id => relatorio.diagnostico) %></td>
+       <td><%= link_to 'Ver Diagnóstico', busca_relatorio_path(:id => relatorio.diagnostico) %></td>
        <td  class="nome"><%= relatorio.fator.nome %></td>
       </tr>
     <% end %>
