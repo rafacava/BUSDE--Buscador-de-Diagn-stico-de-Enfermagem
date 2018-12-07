@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Fators</h1>
+
+  <%= form_tag(fators_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Buscar Fatores", id: "tags" %>
+  <%= submit_tag "Buscar Fatores",:class => "btn-large blue" %>
+  <% end %>
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fators.each do |fator| %>
+      <tr>
+        <td class="nomes"><%= fator.nome %></td>
+        <td><%= link_to 'Ver Relatorio', busca_fator_path(:id => fator) %></td>
+        <% if current_user && current_user.admin %>
+        <td><%= link_to 'Show', fator %></td>
+        <td><%= link_to 'Edit', edit_fator_path(fator) %></td>
+        <td><%= link_to 'Destroy', fator, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Fator', new_fator_path %>
+
+<script>
+  
+  
+  jQuery(function() {
+  var m = [""];
+  var classe = document.getElementsByClassName("nomes");
+  for (var i = 0; i < classe.length; i++) {
+              m.push(classe[i].innerText);
+   }
+   $( "#tags" ).autocomplete({
+        source: m
+      });
+  });
+    
+</script>

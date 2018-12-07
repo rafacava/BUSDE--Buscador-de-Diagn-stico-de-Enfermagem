@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @caracteristica.nome %>
+</p>
+
+<%= link_to 'Editar', edit_caracteristica_path(@caracteristica) %> |
+<%= link_to 'Voltar', caracteristicas_path %>|
+<%= link_to 'Nova Caracteristica', new_caracteristica_path %>

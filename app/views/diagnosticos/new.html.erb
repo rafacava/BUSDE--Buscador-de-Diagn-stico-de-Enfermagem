@@ -1,0 +1,12 @@
+<h1>Novo Diagnostico</h1>
+
+
+
+<% if current_user && current_user.admin %>
+<%= render 'form', diagnostico: @diagnostico %>
+<% else %>
+
+<h1>ACESSO NÃO AUTORIZADO</h1>
+<% end %>
+
+<%= link_to 'Voltar', diagnosticos_path %>

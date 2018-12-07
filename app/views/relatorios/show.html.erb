@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Diagnostico:</strong>
+  <%= @relatorio.diagnostico.nome %>
+</p>
+
+<p>
+  <strong>Fator:</strong>
+  <%= @relatorio.fator.nome %>
+</p>
+
+<p>
+  <strong>Caracteristica:</strong>
+  <%= @relatorio.caracteristica.nome %>
+</p>
+
+<%= link_to 'Edit', edit_relatorio_path(@relatorio) %> |
+<%= link_to 'Back', relatorios_path %>|
+<%= link_to 'Novo Relatorio', new_relatorio_path %>

@@ -1,0 +1,36 @@
+<%= form_with(model: relatorio, local: true) do |form| %>
+  <% if relatorio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(relatorio.errors.count, "error") %> prohibited this relatorio from being saved:</h2>
+
+      <ul>
+      <% relatorio.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :diagnostico_id %>
+    <%= collection_select(:relatorio, :diagnostico_id, Diagnostico.all.order('id desc'), :id, :nome) %>
+  </div>
+  <div class="field">
+    <%= form.label :fator_id %>
+    <%= collection_select(:relatorio, :fator_id, Fator.all.order(:nome), :id, :nome) %>
+  </div>
+  <div class="field">
+    <%= form.label :caracteristica_id %>
+    <%= collection_select(:relatorio, :caracteristica_id, Caracteristica.all.order(:nome), :id, :nome) %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit :class => 'blue btn-large' %>
+  </div>
+<script>
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
+</script>
+<% end %>

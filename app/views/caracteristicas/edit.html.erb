@@ -1,0 +1,9 @@
+<h1>Editing Caracteristica</h1>
+
+<% if current_user && current_user.admin %>
+<%= render 'form', caracteristica: @caracteristica %>
+<%= link_to 'Show', @caracteristica %> |
+<% else %>
+<h1>ACESSO NÃO AUTORIZADO</h1>
+<% end %>
+<%= link_to 'Back', caracteristicas_path %>

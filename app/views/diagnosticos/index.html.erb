@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Diagnosticos</h1>
+  <%= form_tag(diagnosticos_path, :method => "get", id: "search-text") do %>
+  <div class="row">
+        <div class="input-field col s12">
+          <%= text_field_tag :search, params[:search], placeholder: "Buscar Diagnosticos", id: "tags", data: {autocomplete_source: Diagnostico.order(:nome).map(&:nome)}  %>
+          <%= submit_tag "Buscar Diagnosticos",:class => "btn-large blue" %>
+          <% end %>
+        </div>
+  </div>
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @diagnosticos.each do |diagnostico| %>
+      <tr>
+        <td class="nomes"><%= diagnostico.nome %></td>
+        <td><%= link_to 'Ver Relatorio', busca_relatorio_path(:id => diagnostico) %></td>
+       
+        <% if current_user && current_user.admin %>
+        <td><%= link_to 'Show', diagnostico %></td>
+        <td><%= link_to 'Edit', edit_diagnostico_path(diagnostico) %></td>
+        <td><%= link_to 'Destroy', diagnostico, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<br>
+<% if current_user && current_user.admin %>
+        
+<%= link_to 'New Diagnostico', new_diagnostico_path %>
+
+<% end %>
+<script>
+
+jQuery(function() {
+var m = [""];
+var classe = document.getElementsByClassName("nomes");
+for (var i = 0; i < classe.length; i++) {
+            m.push(classe[i].innerText);
+ }
+ $( "#tags" ).autocomplete({
+      source: m
+    });
+});
+</script>

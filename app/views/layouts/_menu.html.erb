@@ -1,0 +1,72 @@
+
+
+<nav>
+    <div class="nav-wrapper blue lighten-2">
+        <%= link_to "BUSDE",  root_path, :class => 'brand-logo'  %>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+       <% if user_signed_in? %>  
+        <li><%= link_to "Diagnósticos",   diagnosticos_path %></li>
+        <li><%= link_to "Fatores",   fators_path %></li>
+        <li><%= link_to "Caracteristicas",   caracteristicas_path %></li>
+        <% if current_user && current_user.admin %>
+        <li><%= link_to "Relatórios",   relatorios_path %></li>
+        <% end %>
+        <li> 
+             <i class="material-icons medium dropdown-trigger" href="#!" data-target="dropdown1">person</i>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+        <li><%= link_to "Diagnósticos",   diagnosticos_path %></li>
+        <li><%= link_to "Fatores",   fators_path %></li>
+        <li><%= link_to "Caracteristicas",   caracteristicas_path %></li>
+        <% if current_user && current_user.admin %>
+        <li><%= link_to "Relatórios",   relatorios_path %></li>
+        <% end %>
+        <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Login</a></li>
+  </ul>
+  <% else %>
+  
+  <li> 
+             <i class="material-icons medium dropdown-trigger" href="#!" data-target="dropdown1">person</i>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
+  <ul class="sidenav" id="mobile-demo">
+        <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Login</a></li>
+  </ul>
+  <% end %> 
+       
+<ul id="dropdown1" class="dropdown-content">
+  
+  <% if user_signed_in? %>  
+      <li><%= link_to current_user.username,   edit_user_registration_path %></li>
+      <li><%= link_to "Logout",   destroy_user_session_path, method: :delete %></li>
+  <% else %>
+      <li><%= link_to "Registrar",   new_user_registration_path %></li>
+      <li><%= link_to "Logar",   new_user_session_path %></li>
+  <% end %> 
+</ul>
+<ul id="dropdown2" class="dropdown-content">
+  
+  <% if user_signed_in? %>  
+      <li><%= link_to current_user.email,   edit_user_registration_path %></li>
+      <li><%= link_to "Logout",   destroy_user_session_path, method: :delete %></li>
+  <% else %>
+      <li><%= link_to "Registrar",   new_user_registration_path %></li>
+      <li><%= link_to "Logar",   new_user_session_path %></li>
+  <% end %> 
+</ul>
+
+<script>
+    
+      $(document).ready(function(){
+    $('.sidenav').sidenav();
+    $(".dropdown-trigger").dropdown();
+  });
+</script>

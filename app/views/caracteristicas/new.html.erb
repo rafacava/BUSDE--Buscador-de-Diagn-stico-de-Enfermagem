@@ -1,0 +1,10 @@
+<h1>Nova Caracteristica</h1>
+
+
+<% if current_user && current_user.admin %>
+<%= render 'form', caracteristica: @caracteristica %>
+<% else %>
+<h1>ACESSO NÃO AUTORIZADO</h1>
+<% end %>
+
+<%= link_to 'Voltar', caracteristicas_path %>

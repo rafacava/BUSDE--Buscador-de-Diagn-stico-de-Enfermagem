@@ -1,0 +1,34 @@
+<h1>Relatorios</h1>
+<h2>Relatorio para as Caracteristicas <p id="demo"></p></h2>
+<table class="center-align">
+  <thead>
+    <tr>
+      <th>Diagnosticos</th>
+      <th>Fatores</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @relatorios.each do |relatorio| %>
+      <tr>
+        <td><%= relatorio.diagnostico.nome %></td>
+        <td><%= link_to 'Ver Diagnostico', busca_relatorio_path(:id => relatorio.diagnostico) %></td>
+        <td class="nome"><%= relatorio.caracteristica.nome %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<script>
+    window.onload((adicionarH3()));
+    function adicionarH3(){
+      var elements = document.getElementsByClassName('nome');
+      var segura = document.getElementById("demo");
+      var requiredElement = elements[0];
+      var txt = requiredElement.innerHTML;
+      segura.innerHTML = txt;
+      }
+  
+</script>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  diagnostico: one
+  fator: one
+  caracteristica: one
+
+two:
+  diagnostico: two
+  fator: two
+  caracteristica: two

@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <h1>Nome:</h1>
+  <%= @diagnostico.nome %>
+</p>
+
+<p>
+  <%= link_to 'Cadastrar um Relatorio', new_relatorio_path %>
+</p>
+<%= link_to 'Edit', edit_diagnostico_path(@diagnostico) %> |
+<%= link_to 'Back', diagnosticos_path %>

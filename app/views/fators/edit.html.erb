@@ -1,0 +1,10 @@
+<h1>Editando o Fator</h1>
+
+<% if current_user && current_user.admin %>
+<%= render 'form', fator: @fator %>
+
+<%= link_to 'Show', @fator %>
+<% else %>
+<h1>ACESSO NÃO AUTORIZADO</h1>
+<% end %>
+<%= link_to 'Voltar', fators_path %>
