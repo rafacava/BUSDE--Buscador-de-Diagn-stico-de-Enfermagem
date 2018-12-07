@@ -1,11 +1,9 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Caracteristicas</h1>
+<h1>Características</h1>
 
 <h2><% current_user.admin %></h2>
   <%= form_tag(caracteristicas_path, :method => "get", id: "search-form") do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Buscar Caracteristicas", id:"tags" %>
-  <%= submit_tag "Buscar Caracteristicas",:class => "btn-large blue" %>
+  <%= text_field_tag :search, params[:search], placeholder: "Buscar Características", id:"tags" %>
+  <%= submit_tag "Buscar Características",:class => "btn-large blue" %>
   <% end %>
 
 <table>
@@ -20,11 +18,11 @@
     <% @caracteristicas.each do |caracteristica| %>
       <tr>
         <td class="nomes"><%= caracteristica.nome %></td>
-        <td><%= link_to 'Ver Relatorio', busca_caracteristica_path(:id => caracteristica) %></td>
+        <td><%= link_to 'Ver Característica', busca_caracteristica_path(:id => caracteristica) %></td>
        <% if current_user && current_user.admin %>
-        <td><%= link_to 'Show', caracteristica %></td>
-        <td><%= link_to 'Edit', edit_caracteristica_path(caracteristica) %></td>
-        <td><%= link_to 'Destroy', caracteristica, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', caracteristica %></td>
+        <td><%= link_to 'Editar', edit_caracteristica_path(caracteristica) %></td>
+        <td><%= link_to 'Apagar', caracteristica, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                                                                   <% end %>
       </tr>
     <% end %>
@@ -34,8 +32,8 @@
 <br>
 <% if current_user && current_user.admin %>
                                       
-<%= link_to 'New Caracteristica', new_caracteristica_path %>
-
+<%= link_to 'Nova Característica', new_caracteristica_path, class: "btn-large blue" %>
+<br><br>
 <% end %>
 
 <script>
