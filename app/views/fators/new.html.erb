@@ -1,5 +1,9 @@
-<h1>New Fator</h1>
+<h1>Novo Fator</h1>
 
+<% if current_user && current_user.admin %>
 <%= render 'form', fator: @fator %>
+<% else %>
+<h1>Acesso não autorizado</h1>
+<% end %>
+<%= link_to 'voltar', fators_path %>
 
-<%= link_to 'Back', fators_path %>

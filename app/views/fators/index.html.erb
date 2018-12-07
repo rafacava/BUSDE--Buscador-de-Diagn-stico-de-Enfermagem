@@ -1,6 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Fators</h1>
+<h1>Fatores</h1>
 
   <%= form_tag(fators_path, :method => "get", id: "search-form") do %>
   <%= text_field_tag :search, params[:search], placeholder: "Buscar Fatores", id: "tags" %>
@@ -18,11 +16,11 @@
     <% @fators.each do |fator| %>
       <tr>
         <td class="nomes"><%= fator.nome %></td>
-        <td><%= link_to 'Ver Relatorio', busca_fator_path(:id => fator) %></td>
+        <td><%= link_to 'Ver fator', busca_fator_path(:id => fator) %></td>
         <% if current_user && current_user.admin %>
-        <td><%= link_to 'Show', fator %></td>
-        <td><%= link_to 'Edit', edit_fator_path(fator) %></td>
-        <td><%= link_to 'Destroy', fator, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', fator %></td>
+        <td><%= link_to 'Editar', edit_fator_path(fator) %></td>
+        <td><%= link_to 'Apagar', fator, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>
@@ -31,8 +29,10 @@
 
 <br>
 
-<%= link_to 'New Fator', new_fator_path %>
-
+<% if current_user && current_user.admin %>
+<%= link_to 'Novo Fator', new_fator_path, class: "btn-large blue" %>
+<br><br>
+<% end %>
 <script>
   
   
